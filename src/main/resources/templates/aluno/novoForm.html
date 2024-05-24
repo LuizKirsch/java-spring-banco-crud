@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Novo Aluno</title>
+</head>
+<body>
+
+<h1>Novo Aluno</h1>
+
+<form action="/aluno/novo" method="post">
+    <label>Nome:</label><br/>
+    <input type="text" name="nome" /><br />
+    <label>Endereço</label><br/>
+    <input type="text" name="endereco"/><br/>
+    <label>Matricula:</label><br />
+    <input type="text" name="numeroMatricula"/><br/><br/>
+    <label>CPF:</label><br />
+    <input type="text" name="cpf"/><br/><br/>
+    <label>Data de nascimento:</label><br />
+    <input type="text" name="nascimento"/><br/><br/>
+    <input type="submit" value="Salvar" />
+</form>
+
+</body>
+</html>
