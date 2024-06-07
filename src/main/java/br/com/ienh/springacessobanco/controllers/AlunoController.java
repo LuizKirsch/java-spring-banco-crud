@@ -3,6 +3,7 @@ package br.com.ienh.springacessobanco.controllers;
 import br.com.ienh.springacessobanco.dto.AlunoDTO;
 import br.com.ienh.springacessobanco.entities.Aluno;
 import br.com.ienh.springacessobanco.repositories.AlunoRepository;
+import br.com.ienh.springacessobanco.services.AlunoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class AlunoController {
 
     @Autowired
     AlunoRepository alunoRepository;
+
+    @Autowired
+    AlunoService alunoService;
 
     @GetMapping("/listar")
     public String listar(Model model){
@@ -35,11 +39,9 @@ public class AlunoController {
         if(bindingResult.hasErrors()){
             return "/aluno/novoForm";
         }
-        Aluno novoAluno = new Aluno();
-        novoAluno.setNome(aluno.nome());
-        novoAluno.setEndereco(aluno.endereco());
-        novoAluno.setNascimento(aluno.nascimento());
-        alunoRepository.save(novoAluno);
+
+        alunoService.salvarAluno(aluno);
+
         return "redirect:/aluno/listar";
     }
 
